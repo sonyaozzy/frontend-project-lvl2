@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import showHelp from "../src/help.js";
+import genDiff from "../src/generateDiff.js";
 
-showHelp();
+genDiff();
