@@ -2,7 +2,7 @@
 
 [![Actions Status](https://github.com/sonyaozzy/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/sonyaozzy/frontend-project-lvl2/actions)
 
-[![github-actions-lint](https://github.com/sonyaozzy/frontend-project-lvl2/actions/workflows/actions-lint-test.yml/badge.svg)](https://github.com/sonyaozzy/frontend-project-lvl2/actions)
+[![github-actions-lint](https://github.com/sonyaozzy/frontend-project-lvl2/actions/workflows/nodejs.yml/badge.svg)](https://github.com/sonyaozzy/frontend-project-lvl2/actions)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5b858da388318cdba8bf/maintainability)](https://codeclimate.com/github/sonyaozzy/frontend-project-lvl2/maintainability)
 
