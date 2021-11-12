@@ -1,9 +1,8 @@
 import { program } from 'commander/esm.mjs';
 import readJsonFile from './readJsonFile.js';
-import showDiff from './findDiff.js';
+import showDiff from './showDiff.js';
 
 const genDiff = () => {
-
   program
     .version('0.0.1')
     .description('Compares two configuration files and shows a difference.')
@@ -19,7 +18,7 @@ const genDiff = () => {
 
         console.log(difference);
       } else {
-        console.log('gendiff is available only for json format');
+        throw new Error('gendiff is available only for json format');
       }
     });
 
