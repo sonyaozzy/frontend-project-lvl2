@@ -1,5 +1,5 @@
 import { program } from 'commander/esm.mjs';
-import readJsonFile from './readJsonFile.js';
+import readFile from './readFile.js';
 import showDiff from './showDiff.js';
 
 const genDiff = () => {
@@ -10,16 +10,12 @@ const genDiff = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action((filepath1, filepath2) => {
-      if (filepath1.endsWith('.json') && filepath2.endsWith('.json')) {
-        const file1Content = readJsonFile(filepath1);
-        const file2Content = readJsonFile(filepath2);
+      const file1Content = readFile(filepath1);
+      const file2Content = readFile(filepath2);
 
-        const difference = showDiff(file1Content, file2Content);
+      const difference = showDiff(file1Content, file2Content);
 
-        console.log(difference);
-      } else {
-        throw new Error('gendiff is available only for json format');
-      }
+      console.log(difference);
     });
 
   program.parse();

@@ -25,15 +25,15 @@ const findDiff = (object1, object2, keys) => {
   return `${buildStr(' ', first, object1)}\n${restDiff}`;
 };
 
-const showDiff = (firstContent, secondContent) => {
-  const firstKeys = Object.keys(firstContent);
-  const secondKeys = Object.keys(secondContent);
+const showDiff = (file1Content, file2Content) => {
+  const firstKeys = Object.keys(file1Content);
+  const secondKeys = Object.keys(file2Content);
 
   const keys = _.union(firstKeys, secondKeys);
   const uniqKeys = _.uniq(keys);
   const sortedKeys = _.sortBy(uniqKeys);
 
-  return `{\n${findDiff(firstContent, secondContent, sortedKeys)}}`;
+  return `{\n${findDiff(file1Content, file2Content, sortedKeys)}}`;
 };
 
 export default showDiff;
