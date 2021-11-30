@@ -15,7 +15,7 @@ const readFile = (filename) => {
   return parse(fs.readFileSync(getFixturePath(filename), 'utf-8'), fileExt);
 };
 
-describe('genDiff for json', () => {
+describe('stylish genDiff for json', () => {
   let file1Content;
   let file2Content;
   let expectedData;
@@ -24,7 +24,7 @@ describe('genDiff for json', () => {
     file1Content = readFile('file1.json');
     file2Content = readFile('file2.json');
 
-    const expectedFile = fs.readFileSync(getFixturePath('expected.txt'), 'utf-8');
+    const expectedFile = fs.readFileSync(getFixturePath('expected-stylish.txt'), 'utf-8');
     expectedData = expectedFile.trim().split('\n\n\n');
   });
 
@@ -48,7 +48,7 @@ describe('genDiff for json', () => {
   });
 });
 
-describe('genDiff for yaml', () => {
+describe('stylish genDiff for yaml', () => {
   let file1Content;
   let file2Content;
   let expectedData;
@@ -57,7 +57,7 @@ describe('genDiff for yaml', () => {
     file1Content = readFile('file1.yml');
     file2Content = readFile('file2.yaml');
 
-    const expectedFile = fs.readFileSync(getFixturePath('expected.txt'), 'utf-8');
+    const expectedFile = fs.readFileSync(getFixturePath('expected-stylish.txt'), 'utf-8');
     expectedData = expectedFile.trim().split('\n\n\n');
   });
 
@@ -76,6 +76,72 @@ describe('genDiff for yaml', () => {
 
     const expected2 = expectedData[2];
     const actual2 = genDiff(file2Content, file1Content);
+
+    expect(actual2).toEqual(expected2);
+  });
+});
+
+describe('plain genDiff for json', () => {
+  let file1Content;
+  let file2Content;
+  let expectedData;
+
+  beforeAll(() => {
+    file1Content = readFile('file1.json');
+    file2Content = readFile('file2.json');
+
+    const expectedFile = fs.readFileSync(getFixturePath('expected-plain.txt'), 'utf-8');
+    expectedData = expectedFile.trim().split('\n\n\n');
+  });
+
+  test('show difference between same files', () => {
+    const expected = '';
+    const actual = genDiff(file1Content, file1Content, 'plain');
+
+    expect(actual).toEqual(expected);
+  });
+
+  test('show difference between different files', () => {
+    const expected1 = expectedData[0];
+    const actual1 = genDiff(file1Content, file2Content, 'plain');
+
+    expect(actual1).toEqual(expected1);
+
+    const expected2 = expectedData[1];
+    const actual2 = genDiff(file2Content, file1Content, 'plain');
+
+    expect(actual2).toEqual(expected2);
+  });
+});
+
+describe('plain genDiff for yaml', () => {
+  let file1Content;
+  let file2Content;
+  let expectedData;
+
+  beforeAll(() => {
+    file1Content = readFile('file1.yml');
+    file2Content = readFile('file2.yaml');
+
+    const expectedFile = fs.readFileSync(getFixturePath('expected-plain.txt'), 'utf-8');
+    expectedData = expectedFile.trim().split('\n\n\n');
+  });
+
+  test('show difference between same files', () => {
+    const expected = '';
+    const actual = genDiff(file1Content, file1Content, 'plain');
+
+    expect(actual).toEqual(expected);
+  });
+
+  test('show difference between different files', () => {
+    const expected1 = expectedData[0];
+    const actual1 = genDiff(file1Content, file2Content, 'plain');
+
+    expect(actual1).toEqual(expected1);
+
+    const expected2 = expectedData[1];
+    const actual2 = genDiff(file2Content, file1Content, 'plain');
 
     expect(actual2).toEqual(expected2);
   });

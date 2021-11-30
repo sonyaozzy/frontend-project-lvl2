@@ -1,13 +1,11 @@
 import findDiff from './findDiff.js';
-import stylish from './formaters.js';
+import chooseFormater from './formatters/index.js';
 
 const genDiff = (file1Content, file2Content, formater = 'stylish') => {
   const difference = findDiff(file1Content, file2Content);
+  const result = chooseFormater(difference, formater);
 
-  if (formater !== 'stylish') {
-    throw new Error(`gendiff isn't available for ${formater} format`);
-  }
-  return stylish(difference);
+  return result;
 };
 
 export default genDiff;

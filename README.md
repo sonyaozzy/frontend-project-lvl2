@@ -16,3 +16,7 @@ Generate Flat YAML Files Difference
 Generate Nested JSON and YAML Files Difference
 
 [![asciicast](https://asciinema.org/a/xyc9huPderZRAjjMiG6jkVwoJ.svg)](https://asciinema.org/a/xyc9huPderZRAjjMiG6jkVwoJ)
+
+Generate Nested Files Difference with "plain" formater
+
+[![asciicast](https://asciinema.org/a/OgYNiV8tUI4uF8eqCuFrs6gBq.svg)](https://asciinema.org/a/OgYNiV8tUI4uF8eqCuFrs6gBq)
