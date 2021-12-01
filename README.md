@@ -20,3 +20,7 @@ Generate Nested JSON and YAML Files Difference
 Generate Nested Files Difference with "plain" formater
 
 [![asciicast](https://asciinema.org/a/OgYNiV8tUI4uF8eqCuFrs6gBq.svg)](https://asciinema.org/a/OgYNiV8tUI4uF8eqCuFrs6gBq)
+
+Generate Nested Files Difference with "json" formater
+
+[![asciicast](https://asciinema.org/a/4EUTn80PbMOrg7FrVfW2BanNX.svg)](https://asciinema.org/a/4EUTn80PbMOrg7FrVfW2BanNX)

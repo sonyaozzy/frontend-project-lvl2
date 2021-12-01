@@ -1,5 +1,6 @@
 import plain from './plain.js';
 import stylish from './stylish.js';
+import json from './json.js';
 
 const chooseFormater = (difference, formater) => {
   if (formater === 'stylish') {
@@ -10,7 +11,11 @@ const chooseFormater = (difference, formater) => {
     return plain(difference);
   }
 
-  throw new Error(`gendiff isn't available for ${formater} format`);
+  if (formater === 'json') {
+    return json(difference);
+  }
+
+  throw new Error(`gendiff isn't available in ${formater} format`);
 };
 
 export default chooseFormater;

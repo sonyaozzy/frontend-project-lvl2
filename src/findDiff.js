@@ -6,7 +6,7 @@ const makeChildsEmptyDiff = (child) => {
   }
 
   const entries = Object.entries(child);
-  const result = entries.reduce((acc, [key, value]) => ({ ...acc, [key]: ['unchanged', makeChildsEmptyDiff(value)] }), {});
+  const result = entries.reduce((acc, [key, value]) => ([...acc, { name: key, difference: 'unchanged', value: makeChildsEmptyDiff(value) }]), []);
   return result;
 };
 
@@ -22,20 +22,22 @@ const findDiff = (object1, object2) => {
     const childrenWithEmptyDiff2 = makeChildsEmptyDiff(object2[key]);
 
     if (_.has(object1, key) && !_.has(object2, key)) {
-      return { ...acc, [key]: ['removed', childrenWithEmptyDiff1] };
+      return [...acc, { name: key, difference: 'removed', value: childrenWithEmptyDiff1 }];
     }
     if (!_.has(object1, key) && _.has(object2, key)) {
-      return { ...acc, [key]: ['added', childrenWithEmptyDiff2] };
+      return [...acc, { name: key, difference: 'added', value: childrenWithEmptyDiff2 }];
     }
     if ((typeof object1[key] === 'object') && (typeof object2[key] === 'object')) {
-      return { ...acc, [key]: ['unchanged', findDiff(object1[key], object2[key])] };
+      return [...acc, { name: key, difference: 'unchanged', value: findDiff(object1[key], object2[key]) }];
     }
     if (object1[key] !== object2[key]) {
-      return { ...acc, [key]: ['updated', childrenWithEmptyDiff1, childrenWithEmptyDiff2] };
+      return [...acc, {
+        name: key, difference: 'updated', value: childrenWithEmptyDiff1, updatedValue: childrenWithEmptyDiff2,
+      }];
     }
 
-    return { ...acc, [key]: ['unchanged', childrenWithEmptyDiff1] };
-  }, {});
+    return [...acc, { name: key, difference: 'unchanged', value: childrenWithEmptyDiff1 }];
+  }, []);
 
   return result;
 };
