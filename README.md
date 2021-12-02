@@ -51,7 +51,7 @@ Options:
 
 ## Input formats
 
-Utility supports two input formats: yaml, json.
+Utility supports two input formats: `yaml`, `json`.
 
 <div id="json"></div>
 
@@ -65,7 +65,7 @@ Example of `yaml` files difference:
 
 [![asciicast](https://asciinema.org/a/B7Lh4cvtVmlOjaCUdcdgEHBXE.svg)](https://asciinema.org/a/B7Lh4cvtVmlOjaCUdcdgEHBXE)
 
-## Formaters
+## Formatters
 
 <div id="stylish">
     <h3>Stylish</h3>
