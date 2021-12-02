@@ -1,4 +1,4 @@
-import path from 'path';
+// import path from 'path';
 
 const stringify = (value) => {
   if (Array.isArray(value)) {
@@ -11,20 +11,21 @@ const stringify = (value) => {
 };
 
 const plain = (value) => {
-  const iter = (currentValue, ancestry) => {
+  const iter = (currentValue, ancestry, delimiter) => {
     if (!Array.isArray(currentValue)) {
       return '';
     }
 
     const lines = currentValue
       .map((key) => {
-        const newAncestry = (path.join(ancestry, key.name)).replaceAll('/', '.');
+        const newAncestry = `${ancestry}${delimiter}${key.name}`;
         const currentDiff = key.difference;
         const unmodifiedValue = stringify(key.value);
         const modifiedValue = stringify(key.updatedValue);
+        const newDelimiter = '.';
 
         if (currentDiff === 'unchanged') {
-          return iter(key.value, newAncestry);
+          return iter(key.value, newAncestry, newDelimiter);
         }
         if (currentDiff === 'removed') {
           return `Property '${newAncestry}' was removed`;
@@ -41,7 +42,7 @@ const plain = (value) => {
     return lines.join('\n');
   };
 
-  return iter(value, '');
+  return iter(value, '', '');
 };
 
 export default plain;
