@@ -1,5 +1,4 @@
 import { program } from 'commander/esm.mjs';
-import readFile from './readFile.js';
 import genDiff from './gendiff.js';
 
 const generateDiff = () => {
@@ -10,12 +9,9 @@ const generateDiff = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action((filepath1, filepath2) => {
-      const file1Content = readFile(filepath1);
-      const file2Content = readFile(filepath2);
-
       const options = program.opts();
 
-      const result = genDiff(file1Content, file2Content, options.format);
+      const result = genDiff(filepath1, filepath2, options.format);
 
       console.log(result);
     });
