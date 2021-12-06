@@ -115,4 +115,4 @@ gendiff -f json file1.json file2.json
 
 _Example of json:_
 
-[![asciicast](https://asciinema.org/a/uUlYDmJO5XrfJ2ymHiPxq8pIt.svg)](https://asciinema.org/a/uUlYDmJO5XrfJ2ymHiPxq8pIt)
+[![asciicast](https://asciinema.org/a/AjVSFjwDkK9IESsVjmsiunlDe.svg)](https://asciinema.org/a/AjVSFjwDkK9IESsVjmsiunlDe)
