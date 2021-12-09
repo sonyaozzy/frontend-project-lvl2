@@ -1,9 +1,11 @@
+import _ from 'lodash';
+
 const stylish = (node) => {
   const replacer = ' ';
   const spacesCount = 4;
 
   const formatValue = (value, depth) => {
-    if (typeof value !== 'object' || value === null) {
+    if (!_.isPlainObject(value) || value === null) {
       return value;
     }
 

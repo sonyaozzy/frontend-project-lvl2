@@ -2,20 +2,20 @@ import plain from './plain.js';
 import stylish from './stylish.js';
 import json from './json.js';
 
-const chooseFormater = (difference, formater) => {
-  if (formater === 'stylish') {
-    return stylish(difference);
-  }
+const formatter = (difference, formatName) => {
+  switch (formatName) {
+    case 'stylish':
+      return stylish(difference);
 
-  if (formater === 'plain') {
-    return plain(difference);
-  }
+    case 'plain':
+      return plain(difference);
 
-  if (formater === 'json') {
-    return json(difference);
-  }
+    case 'json':
+      return json(difference);
 
-  throw new Error(`gendiff isn't available in ${formater} format`);
+    default:
+      throw new Error(`gendiff isn't available in ${formatName} format`);
+  }
 };
 
-export default chooseFormater;
+export default formatter;
